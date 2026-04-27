@@ -73,6 +73,20 @@ interface Flags {
 
 const RestCountries: React.FC = () => {
     const [countries, setCountries] = useState<Countries[]>([]);
+    const [darkMode, setDarkMode] = useState(false)
+    
+const toggleDarkMode = () => {
+  setDarkMode(prev => !prev);
+};
+
+// Tento efekt sa postará o to, aby HTML tag VŽDY súhlasil s React stavom
+useEffect(() => {
+  if (darkMode) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}, [darkMode]);
 
 useEffect(() => {
     fetch('data.json')
@@ -85,10 +99,12 @@ useEffect(() => {
 []);
 
 return (
-<div className="min-h-screen flex flex-col bg-gray-200"> {/* Pridali sme flex-col a šedé pozadie */}
-    <div>
-      <div className="navigation__bar">
-        <NavBar />
+<div className={`min-h-screen flex flex-col transition-colors duration-300 ${darkMode ? 'bg-dm-bg text-white' : 'bg-lm-bg text-lm-text'}`}>
+    <div className="main__container">
+      <div className="grow">
+        <NavBar 
+          onToggle={toggleDarkMode}
+          darkMode={darkMode}/>
       </div>
 
       <div className="main__content">
@@ -97,29 +113,31 @@ return (
 
         <div className="filter__bar">
         </div>
+        
+        <div className="countries__container">  
+        {countries.map((country) => (                  
+          <div
+            key={country.alpha3Code}
+            className="flag__container"> 
 
-        <div className="countries__container">
-          {countries.map((country) => (
             <div>
-              <div 
-                key={country.alpha3Code}
-                className="flag__container">            
-                <Flags 
-                  src={country.flags.svg}
-                  alt={`Flag of $(country.name)`}/>
-              </div>
+              <Flags 
+                src={country.flags.svg}
+                alt={`Flag of ${country.name}`}/>
+            </div>
 
-              <div className="info__container">             
+            <div className="info__container">             
               <Info 
                 name={country.name}
                 population={country.population}
                 region={country.region}
                 capital={country.capital}
               />                     
-          </div>
-            </div>
-          ))}
-        </div>        
+           </div>
+        </div>           
+        ))}
+        </div>
+                
       </div>
     </div>
 

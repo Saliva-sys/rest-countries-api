@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --color-dm-el: hsl(209, 23%, 22%);
+    --color-dm-bg: hsl(207, 26%, 17%);
+    --color-lm-text: hsl(200, 15%, 8%);
+    --color-lm-input: hsl(0, 0%, 50%);
+    --color-lm-bg: hsl(0, 0%, 99%);
+    --color-white: hsl(0, 100%, 100%);
+}
+
