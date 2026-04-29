@@ -1,11 +1,27 @@
 @import "tailwindcss";
 
-@theme {
-    --color-dm-el: hsl(209, 23%, 22%);
-    --color-dm-bg: hsl(207, 26%, 17%);
-    --color-lm-text: hsl(200, 15%, 8%);
-    --color-lm-input: hsl(0, 0%, 50%);
-    --color-lm-bg: hsl(0, 0%, 99%);
-    --color-white: hsl(0, 100%, 100%);
+/* 1. Manuálne nadefinovanie fontu (istota) */
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 }
 
+@theme {
+  /* 2. Priradenie k premenným - skús to bez úvodzoviek aj s nimi */
+  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Farby */
+  --color-dm-el: hsl(209, 23%, 22%);
+  --color-dm-bg: hsl(207, 26%, 17%);
+  --color-lm-text: hsl(200, 15%, 8%);
+  --color-lm-input: hsl(0, 0%, 50%);
+  --color-lm-bg: hsl(0, 0%, 99%);
+  --color-white: hsl(0, 100%, 100%);
+}
+
+/* 3. Vynútenie na celú aplikáciu */
+@layer base {
+  html, body {
+    font-family: "Nunito Sans", sans-serif !important;
+  }
+}
