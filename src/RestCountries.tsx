@@ -96,23 +96,25 @@ const RestCountries: React.FC = () => {
                 darkMode = {darkMode}
             />
 
-            <div className="flex-col ps-8 pe-8 pt-12">
-                <section>
-                    <Search 
-                        searchValue={searchValue}
-                        setSearchValue={setSearchValue}
-                        allCountries={countries}
-                        onSelectCountry={handleSelectCountry}
-                        activeRegion={activeRegion}/>
-                </section>
+            <div className="flex-col ps-8 md:ps-[5rem] pe-8 md:pe-[5rem] pt-12">
+                <div className=" flex flex-col md:flex-row md:justify-between">
+                    <section>
+                        <Search 
+                            searchValue={searchValue}
+                            setSearchValue={setSearchValue}
+                            allCountries={countries}
+                            onSelectCountry={handleSelectCountry}
+                            activeRegion={activeRegion}/>
+                    </section>
 
-                <section>
-                    <Filter
-                        isOpen={isOpen}
-                        onToggle={toggleFilter} 
-                        onFilterByRegion={handleFilterByRegion}
-                        selectedRegion={activeRegion}/>
-                </section>
+                    <section>
+                        <Filter
+                            isOpen={isOpen}
+                            onToggle={toggleFilter} 
+                            onFilterByRegion={handleFilterByRegion}
+                            selectedRegion={activeRegion}/>
+                    </section>
+                </div>
 
                 <div className="mt-16 ms-20 me-[4.8rem] rounded-[0.6rem]">
                 {filteredCountries.length > 0 ? (
