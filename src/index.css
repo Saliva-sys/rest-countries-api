@@ -1,14 +1,12 @@
 @import "tailwindcss";
 
-/* 1. Manuálne nadefinovanie fontu (istota) */
-@font-face {
-  font-family: 'Nunito Sans';
-  src: url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
-}
-
+/* 1. Manuálne nadefinovanie fontu */
 @theme {
-  /* 2. Priradenie k premenným - skús to bez úvodzoviek aj s nimi */
-  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  /* 2. Priradenie k premenným */
+  --font-sans: "Nunito Sans", sans-serif;
+  --font-weight-light: 300;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 800;
   
   /* Farby */
   --color-dm-el: hsl(209, 23%, 22%);
@@ -21,7 +19,11 @@
 
 /* 3. Vynútenie na celú aplikáciu */
 @layer base {
-  html, body {
-    font-family: "Nunito Sans", sans-serif !important;
-  }
+  html, body, #root {
+    /* Pridajme 'sans-serif' ako poistku a skúsme zmeniť poradie */
+    font-family: "Nunito Sans",sans-serif !important;
+    font-feature-settings: "cv08" 0, "ss01" 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }  
 }
