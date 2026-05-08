@@ -7,15 +7,25 @@ interface SearchProps {
     setSearchValue: (value: string) => void;
     allCountries: Countries[];
     onSelectCountry: (country: Countries) => void;
+    activeRegion: string;
 }
 
-const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountries, onSelectCountry}) => {
+const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountries, onSelectCountry, activeRegion}) => {
 
     // Lokálny stav na to, aby sme vedeli, či je zoznam návrhov otvorený
     const [isOpen, setIsOpen] = useState(false);
 
     // hľadáme krajiny, ktoré začínajú na zadaný text
-    const suggestions = (searchValue.trim().length > 0 && allCountries) ? allCountries.filter(country => country.name.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 10) : [];
+    const suggestions = (searchValue.trim().length > 0 && allCountries) 
+        ? allCountries.filter(country => {
+            // podmienka pre zobrazenie krajin, ktorzch nazov zacina na text zadany do vzhladavacieho pola, bez ohladu na velkost pisma
+            const matchesName = country.name.toLowerCase().startsWith(searchValue.toLowerCase())
+            //podmienka, ake je vybrany region, nazov krajiny sa musi zhodovat s textom zadanym do vyhladavacieho pola a krajina musi paatrit do vybraneho regionu
+            const matchesRegion = activeRegion ? country.region === activeRegion : true;
+
+            return matchesName && matchesRegion;
+        }).slice(0, 10) : [];
+
     
     console.log(searchValue);
     return (
@@ -38,9 +48,9 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
             </form>
 
             {/* Vykreslenie zoznamu moznosti - vyskakovaci zoznam */}
-            <div>
+            <div className="mt-2 relative z-10">
                 {isOpen && searchValue.trim().length > 0 && (
-                    <ul className="absolute">
+                    <ul className="absolute cursor-pointer rounded-[0.6rem] w-[25rem] h-auto pt-[2rem] ps-[3rem] pb-[2.2rem] space-y-[0.7rem] bg-amber-700">
                         {suggestions.length > 0 ? (
                         suggestions.map((country) => (
                             <li
@@ -48,7 +58,8 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                                 onClick={() => { setSearchValue(country.name);
                                     onSelectCountry(country);
                                     setIsOpen(false);
-                                }}>
+                                }}
+                                className="text-[1.5rem] font-[600] tracking-[-0.01rem]">
                                     {country.name}
                             </li>
                             ))

@@ -37,11 +37,14 @@ const RestCountries: React.FC = () => {
 
     const handleSelectCountry = (country: Countries) => {
         setSearchValue(country.name);
-        setActiveRegion("");
     }
 
     const handleFilterByRegion = (region: string) => {
-        setActiveRegion(region);
+        let apiRegion = region;
+        if (region === "America") {
+            apiRegion = "Americas";}
+
+        setActiveRegion(apiRegion);
         setSearchValue("");
         setIsOpen(false);
         if (region === "Filter by Region") {
@@ -99,7 +102,8 @@ const RestCountries: React.FC = () => {
                         searchValue={searchValue}
                         setSearchValue={setSearchValue}
                         allCountries={countries}
-                        onSelectCountry={handleSelectCountry}/>
+                        onSelectCountry={handleSelectCountry}
+                        activeRegion={activeRegion}/>
                 </section>
 
                 <section>
@@ -110,7 +114,7 @@ const RestCountries: React.FC = () => {
                         selectedRegion={activeRegion}/>
                 </section>
 
-                <div className="mt-16 ms-20 me-20 rounded-[0.6rem]">
+                <div className="mt-16 ms-20 me-[4.8rem] rounded-[0.6rem]">
                 {filteredCountries.length > 0 ? (
                 filteredCountries.map((country) => (
                     <div
