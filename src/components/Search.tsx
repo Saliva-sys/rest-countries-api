@@ -39,7 +39,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
 
             {/* Vykreslenie zoznamu moznosti - vyskakovaci zoznam */}
             <div>
-                {isOpen &&searchValue.trim().length > 0 && (
+                {isOpen && searchValue.trim().length > 0 && (
                     <ul className="absolute">
                         {suggestions.length > 0 ? (
                         suggestions.map((country) => (
