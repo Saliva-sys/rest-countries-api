@@ -8,9 +8,15 @@ interface SearchProps {
     allCountries: Countries[];
     onSelectCountry: (country: Countries) => void;
     activeRegion: string;
+    darkMode: boolean;
 }
 
-const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountries, onSelectCountry, activeRegion}) => {
+const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountries, onSelectCountry, activeRegion, darkMode}) => {
+
+    const searchStyle = {
+        light: 'bg-white',
+        dark: 'bg-dm-el',    
+    }
 
     // Lokálny stav na to, aby sme vedeli, či je zoznam návrhov otvorený
     const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +37,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
     return (
         <div className="relative">
             <form onSubmit={(e) => e.preventDefault()}>
-                <div className="flex h-[6rem] md:h-[3.5rem] w-full md:w-[30rem] items-center ps-[4rem] md:ps-[2rem] gap-[3.5rem] md:gap-[1.6rem] shadow-[0px_4px_10px_rgba(0,0,0,0.1)] rounded-[0.6rem]">
+                <div className={`search flex h-[6rem] md:h-[3.5rem] w-full md:w-[30rem] items-center ps-[4rem] md:ps-[2rem] gap-[3.5rem] md:gap-[1.6rem] shadow-[0px_4px_10px_rgba(0,0,0,0.1)] rounded-[0.6rem] transition-colors duration-300 ${searchStyle[darkMode ? 'dark' : 'light']}`}>
                     {searchValue === "" && (<span className="text-[1.8rem] md:text-[1rem]"><FaSearch /></span>)}
                     <input
                         type="text"          
@@ -50,7 +56,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
             {/* Vykreslenie zoznamu moznosti - vyskakovaci zoznam */}
             <div className="mt-2 relative z-10">
                 {isOpen && searchValue.trim().length > 0 && (
-                    <ul className="absolute cursor-pointer rounded-[0.6rem] w-[25rem] md:w-[12.5rem] h-auto pt-[2rem] md:pt-[1rem] ps-[3rem] md:ps-[1.5rem] pb-[2.2rem] md:pb-[1.1rem] space-y-[0.7rem] md:space-y-[0.4rem] bg-amber-700">
+                    <ul className={`popup absolute cursor-pointer rounded-[0.6rem] w-[25rem] md:w-[12.5rem] h-auto pt-[2rem] md:pt-[1rem] ps-[3rem] md:ps-[1.5rem] pb-[2.2rem] md:pb-[1.1rem] space-y-[0.7rem] md:space-y-[0.4rem] transition-colors duration-300 ${searchStyle[darkMode ? 'dark' : 'light']}`}>
                         {suggestions.length > 0 ? (
                         suggestions.map((country) => (
                             <li
