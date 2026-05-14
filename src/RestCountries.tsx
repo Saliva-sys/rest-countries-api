@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import data from './data.json';
 
 import Search from './components/Search';
 import Filter from './components/Filter';
@@ -59,14 +60,15 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
 
     //*********************************************************************
     // import dat z json
-    const [countries, setCountries] = useState<Countries[]>([]);
+    // const [countries, setCountries] = useState<Countries[]>(data);
+    const [countries] = useState<Countries[]>(data as Countries[]);
 
-    useEffect(() => {
-        fetch('data.json')
-            .then(response => response.json())
-            .then((data: Countries[]) => {setCountries(data);})
-            .catch(error=>console.log(error))
-    }, []);
+    // useEffect(() => {
+        // fetch('/src/data.json')
+            // .then(response => response.json())
+            // .then((data: Countries[]) => {setCountries(data);})
+            // .catch(error=>console.log(error))
+    // }, []);
     //******************************************************************
 
     // zapis na vykreslenie krajin z vyhladania musi byt az po nacitani dat z json, inak by sa filtroval prazdny zoznam a nezobrazilo by sa nic
@@ -82,9 +84,10 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     // Ak k tomu začneš písať, matchesName to ďalej oseká len v rámci tej Európy.
     return matchesName && matchesRegion;
 });
+console.log(countries)
 
     return (
-        <main className={`main w-full h-screen flex-col transition-colors duration-300 ${modeStyle[darkMode ? 'dark' : 'light']}`}>
+        <main className={`main w-full min-h-screen flex-col transition-colors duration-300 ${modeStyle[darkMode ? 'dark' : 'light']}`}>
             
 
             <div className="flex-col ps-8 md:ps-[5rem] pe-8 md:pe-[5rem] pt-12">

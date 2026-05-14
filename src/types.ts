@@ -50,7 +50,7 @@ export interface Countries {
   demonym: string;
   area: number;
   timezones: string[];
-  borders: string[];
+  borders?: string[];
   nativeName: string;
   numericCode: string;
   flags: Flags;
@@ -58,7 +58,8 @@ export interface Countries {
   languages: Language[];
   translations: Translations;
   flag: string;
-  regionalBlocs: RegionalBloc[];
-  cioc: string;
+  regionalBlocs?: RegionalBloc[];
+  cioc?: string;
+  gini?: number;
   independent: boolean;
 }

@@ -30,7 +30,7 @@ const App: React.FC = () => {
             />
         <Routes>
           <Route path="/" element={<RestCountries darkMode={darkMode}/>} />
-          <Route path="/country/:alpha3Code" element={<Country />} />
+          <Route path="/country/:alpha3Code" element={<Country darkMode={darkMode} />} />          
         </Routes>
       </main>
     </BrowserRouter>
