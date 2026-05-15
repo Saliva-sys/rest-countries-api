@@ -23,16 +23,42 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <main>
-        <NavBar 
-                onSwitch = {switchDarkMode} 
-                darkMode = {darkMode}
-            />
-        <Routes>
-          <Route path="/" element={<RestCountries darkMode={darkMode}/>} />
-          <Route path="/country/:alpha3Code" element={<Country darkMode={darkMode} />} />          
-        </Routes>
-      </main>
+      <div className=" 
+        flex 
+        flex-col 
+        md:justify-center
+        w-full 
+        min-h-screen  md:h-screen 
+        md:overflow-hidden
+        m-0 md:mt-10
+        transition-colors duration-300
+        ">
+          <main className="
+            flex 
+            flex-col 
+            w-full max-w-360 
+            h-full md:h-256 min-h-0
+            m-0 md:m-auto">
+            <NavBar 
+                    onSwitch = {switchDarkMode} 
+                    darkMode = {darkMode}
+                />
+            <div className="
+              grow 
+              flex 
+              flex-col
+              w-full    
+              min-h-0          
+              transition-colors 
+              duration-300 
+              ">
+              <Routes>
+                <Route path="/" element={<RestCountries darkMode={darkMode}/>} />
+                <Route path="/country/:alpha3Code" element={<Country darkMode={darkMode} />} />          
+              </Routes>
+            </div>
+          </main>
+      </div>
     </BrowserRouter>
   );
 };

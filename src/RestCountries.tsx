@@ -6,7 +6,7 @@ import Filter from './components/Filter';
 import Flags from './components/Flags';
 import Info from './components/Info';
 import { Countries } from './types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 interface RestCountriesProps  {
     darkMode: boolean;
 }
@@ -29,9 +29,11 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     // Vyhladavanie a zobrazenie vyhladanej krajiny vo vyhladavacom poli podla nazvu a vo filtri podla regionu
     const [searchValue, setSearchValue] = useState("");
     const [activeRegion, setActiveRegion] = useState("");
+    const navigate = useNavigate();
 
     const handleSelectCountry = (country: Countries) => {
         setSearchValue(country.name);
+        navigate(`/country/${country.alpha3Code}`);
     }
 
     const handleFilterByRegion = (region: string) => {
@@ -87,11 +89,29 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
 console.log(countries)
 
     return (
-        <main className={`main w-full min-h-screen flex-col transition-colors duration-300 ${modeStyle[darkMode ? 'dark' : 'light']}`}>
-            
+        <main className={`main 
+            flex 
+            flex-col 
+            w-full
+            h-full 
+            transition-colors duration-300
+            ${modeStyle[darkMode ? 'dark' : 'light']}`}>
 
-            <div className="flex-col ps-8 md:ps-[5rem] pe-8 md:pe-[5rem] pt-12">
-                <div className=" flex flex-col md:flex-row md:justify-between">
+            <div className=" 
+                flex
+                flex-col
+                h-full 
+                ps-8 md:ps-20 
+                pe-8 md:pe-20 
+                pt-12"
+                >
+                
+                <div className="
+                flex 
+                flex-col md:flex-row
+                grow 
+                min-h-0 
+                md:justify-between">
                     <section>
                         <Search 
                             searchValue={searchValue}
@@ -112,14 +132,30 @@ console.log(countries)
                     </section>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 mt-14 md:mt-[2.5rem] ms-20 md:ms-0 me-[4.8rem] md:me-[0rem] gap-y-[5rem] md:gap-y-[4.7rem] md:gap-x-[4.7rem]">
+                <div className="
+                    grid
+                    grid-cols-1 md:grid-cols-4
+                    grow
+                    min-h-0 
+                    md:overflow-y-auto 
+                    mt-14 md:mt-[6.3rem]
+                    ms-20 md:ms-0 
+                    me-[4.8rem] md:me-0 
+                    gap-y-20 md:gap-y-[4.7rem] 
+                    md:gap-x-[4.7rem]
+                    ">
                 {filteredCountries.length > 0 ? (
                 filteredCountries.map((country) => (
                     <Link to={`/country/${country.alpha3Code}`}
                         key={country.alpha3Code}>
                         <div 
                             key={country.alpha3Code}                        
-                            className={`state shadow-[0px_4px_10px_rgba(0,0,0,0.1)] rounded-[0.6rem] md:rounded-[0.3rem] transition-colors duration-300 ${stateStyle[darkMode ? 'dark' : 'light']}`} 
+                            className={`state 
+                                shadow-[0px_4px_10px_rgba(0,0,0,0.1)] 
+                                rounded-[0.6rem] 
+                                md:rounded-[0.3rem] 
+                                transition-colors duration-300 
+                                ${stateStyle[darkMode ? 'dark' : 'light']}`}
                             >
                             <section>
                                 <Flags 
@@ -138,7 +174,13 @@ console.log(countries)
                     </Link>
                 ))                    
                 ) : (
-                    <p>No countries found.</p>
+                    <div className="  
+                        flex                  
+                        w-full md:w-7xl
+                        items-center
+                        justify-center">
+                        <p className="text-[1.5rem] font-bold text-center">No countries found.</p>
+                    </div>
                 )
                 }
                 </div>

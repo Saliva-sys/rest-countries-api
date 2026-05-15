@@ -23,22 +23,59 @@ return (
     <div>
         <div   
         onClick={onToggle} 
-        className={`filter relative flex h-[6rem] md:h-[3.5rem] items-center mt-[4.5rem] md:m-0 ps-[3rem] md:ps-[1.5rem] pe-[2.45rem] md:pe-[1.1rem] shadow-[0px_4px_10px_rgba(0,0,0,0.1)] rounded-[0.6rem] md:rounded-[0.5rem] w-[25.1rem] md:w-[12.5rem] justify-between cursor-pointer transition-colors duration-300 ${filterStyle[darkMode ? 'dark' : 'light']}`}>
-            <span className="text-[1.5rem] md:text-[0.9rem] font-[600] tracking-[-0.017rem] md:tracking-[-0.025rem]">{selectedRegion === "" ? "Filter by Region" : selectedRegion === "Americas" ? "America" : selectedRegion}</span>       
+        className={`filter 
+            relative 
+            flex 
+            h-24 
+            md:h-14 
+            items-center 
+            mt-18 
+            md:m-0 
+            ps-12 md:ps-6 
+            pe-[2.45rem] md:pe-[1.1rem] 
+            shadow-[0px_4px_10px_rgba(0,0,0,0.1)] 
+            rounded-[0.6rem] md:rounded-lg 
+            w-[25.1rem] md:w-50 
+            justify-between 
+            cursor-pointer 
+            transition-colors duration-300 
+            ${filterStyle[darkMode ? 'dark' : 'light']}`}
+        >
+            <span className="
+                text-[1.5rem] md:text-[0.9rem] 
+                font-semibold 
+                tracking-[-0.017rem] md:tracking-[-0.025rem]">
+                    {selectedRegion === "" ? "Filter by Region" : selectedRegion === "Americas" ? "America" : selectedRegion}</span>       
 
             <span>{isOpen ? <FaChevronDown className="text-[17px] md:text-[12px]" /> : <FaChevronUp className="text-[17px] md:text-[12px]" />}</span>      
 
         </div>
 
         {/* Vykreslenie zoznamu moznosti - vyskakovaci zoznam */}   
-        <div className="mt-2 md:mt-[0.2rem] relative">
+        <div className="
+            mt-2 md:mt-[0.2rem] 
+            relative">
             {isOpen && filters.length >0 && (
-                <ul className={`popup absolute cursor-pointer rounded-[0.6rem] w-[25.1rem] md:w-[12.5rem] h-auto pt-[2rem] md:pt-[1rem] ps-[3rem] md:ps-[1.5rem] pb-[2.2rem] md:pb-[1.1rem] space-y-[0.7rem] md:space-y-[0.4rem] transition-colors duration-300 ${filterStyle[darkMode ? 'dark' : 'light']}`}>
+                <ul className={`popup 
+                absolute 
+                cursor-pointer 
+                rounded-[0.6rem] 
+                w-[25.1rem] md:w-50 
+                h-auto 
+                pt-8 md:pt-4 
+                ps-12 md:ps-6 
+                pb-[2.2rem] md:pb-[1.1rem] 
+                space-y-[0.7rem] md:space-y-[0.4rem] 
+                transition-colors duration-300 
+                ${filterStyle[darkMode ? 'dark' : 'light']}`}>
                     {filters.map((region) => (
                         <li
                             key={region}
                             onClick = {() => onFilterByRegion(region)}
-                            className="text-[1.5rem] md:text-[0.9rem] font-[600] tracking-[-0.017rem] md:tracking-[-0.02rem]">
+                            className="
+                            text-[1.5rem] md:text-[0.9rem] 
+                            font-semibold 
+                            tracking-[-0.017rem] md:tracking-[-0.02rem]">
                             {region}                                
                         </li>
                     ))}                        

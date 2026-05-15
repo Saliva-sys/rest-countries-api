@@ -13,7 +13,7 @@ interface CountryProps {
 const Country: React.FC<CountryProps> = ({darkMode}) => {
     const countryStyle = {
         dark: 'bg-dm-bg text-white',
-        light: 'bg-lm-bg text-lm-text',
+        light: 'bg-lm-bg md:bg-white text-lm-text',
     }
 
     const {alpha3Code} = useParams();
@@ -24,13 +24,24 @@ const Country: React.FC<CountryProps> = ({darkMode}) => {
     }
 
     return (
-        <div className={`country flex flex-col ps-[3.5rem] md:ps-[5rem] pe-[3.4rem] pt-[5rem] duration-300 ${countryStyle[darkMode ? 'dark' : 'light']}`}>
+        <div className={`country 
+            flex 
+            flex-col 
+            ps-14 md:ps-20 
+            pe-[3.4rem] 
+            pt-20 
+            transition-colors duration-300 
+            ${countryStyle[darkMode ? 'dark' : 'light']}`}>
             <div>
                 <BackButton 
                     darkMode={darkMode}
                 />
             </div>
-            <div className="flex md:grid flex-col md:grid-cols-2 pt-[8rem] md:pt-[5rem] justify-between">
+            <div className="
+                flex md:grid 
+                flex-col md:grid-cols-2 
+                pt-32 md:pt-20 
+                justify-between">
                 <div>
                     <Flags 
                         src={country.flags.svg}
