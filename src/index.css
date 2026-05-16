@@ -15,6 +15,7 @@
   --color-lm-input: hsl(0, 0%, 50%);
   --color-lm-bg: hsl(0, 0%, 99%);
   --color-white: hsl(0, 100%, 100%);
+  --color-blue: hsl(205, 100%, 36%);
 }
 
 /* 3. Vynútenie na celú aplikáciu */

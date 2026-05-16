@@ -1,5 +1,8 @@
 import React from 'react';
 
+import data from '../data.json';
+import {Countries } from '../types';
+
 interface CountryDetailsProps {
     name: string;
     population: number;
@@ -9,16 +12,28 @@ interface CountryDetailsProps {
     topLevelDomain: string[];
     currencies: {name: string}[];
     languages: {name: string}[];
-    borders: string[];
+    borders?: string[];
     nativeName: string;
+    darkMode:boolean;
 }
 
-const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region, subregion, capital, topLevelDomain, currencies, languages, borders, nativeName}) => {
+const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region, subregion, capital, topLevelDomain, currencies, languages, borders = [], nativeName, darkMode}) => {
+
+    const borderStyle = {
+        light: 'bg-white text-lm-text',
+        dark: 'bg-dm-el text-white',   
+    }
+
+    const borderCountries = borders?.map(border => {
+        const country = (data as Countries[]).find(item => item.alpha3Code === border);
+        return country ? country.name : border;
+    })
     
     return (
         <div className="
             flex 
-            flex-col md:ps-[1.7rem] 
+            flex-col
+            md:ps-[3.1rem] 
             pt-[5.3rem] md:pt-[2.3rem]">
             <h1 className="
                 text-[2.75rem] 
@@ -40,7 +55,7 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                 <div className="
                     flex 
                     flex-col md:grid md:grid-cols-2 
-                    md:gap-18 
+                    md:gap-12
                     pt-[0.45rem] md:pt-[0.8rem] 
                     md:text-[1rem] 
                     leading-16 md:leading-8">
@@ -51,15 +66,55 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                         <p><span className="font-semibold">Sub Region:</span> {subregion}</p>
                         <p><span className="font-semibold">Capital:</span> {capital}</p>
                     </div>
-                    <div>
+                    <div className="
+                        pt-16 md:pt-0">
                         <p><span className="font-semibold">Top Level Domain:</span> {topLevelDomain.join(', ')}</p>
                         <p><span className="font-semibold">Currencies:</span> {currencies.map(currency => currency.name).join(', ')}</p>
                         <p><span className="font-semibold">Languages:</span> {languages.map(language => language.name).join(', ')}</p>
                     </div>
                 </div>
 
-                <div>
-                    <p><span className="font-semibold">Border Countries:</span> {borders.join(', ')}</p>
+                <div className="
+                    flex
+                    flex-col md:flex-row
+                    md:items-center
+                    mt-[4.2rem] md:mt-[4.15rem]
+                    gap-8 md:gap-[0.9rem]">
+                    <p className="
+                        font-semibold
+                        text-[2rem] md:text-[1rem]
+                        whitespace-nowrap">
+                            Border Countries:
+                    </p> 
+                    <div className="
+                        flex
+                        flex-row
+                        flex-wrap
+                        gap-[1.2rem] md:gap-[0.6em]      
+                        ">
+                        {borderCountries.length > 0 ? (
+                            borderCountries.map((borderName, index) => (
+                                <span
+                                    key={index}
+                                    className={`borderCountry 
+                                    flex
+                                    justify-center
+                                    items-center
+                                    rounded-[0.3rem]
+                                    shadow-[0px_0px_12px_rgba(0,0,0,0.2)] 
+                                    w-[12.05rem] md:w-[6.15rem]
+                                    pt-[0.2rem] md:pt-[0.2rem]
+                                    pb-[0.3rem] md:pb-[0.2rem]
+                                    text-[1.5rem] md:text-[0.9rem]
+                                    transition-colors duration-300
+                                    ${borderStyle[darkMode ? 'dark' : 'light']}`}>
+                                    {borderName}
+                                </span>
+                            ))
+                        ) : (
+                            <p>No border countries found.</p>
+                        )}
+                    </div>
                 </div>
 
             </div>

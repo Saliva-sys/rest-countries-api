@@ -86,7 +86,6 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     // Ak k tomu začneš písať, matchesName to ďalej oseká len v rámci tej Európy.
     return matchesName && matchesRegion;
 });
-console.log(countries)
 
     return (
         <main className={`main 
@@ -142,8 +141,7 @@ console.log(countries)
                     ms-20 md:ms-0 
                     me-[4.8rem] md:me-0 
                     gap-y-20 md:gap-y-[4.7rem] 
-                    md:gap-x-[4.7rem]
-                    ">
+                    md:gap-x-[4.7rem]">
                 {filteredCountries.length > 0 ? (
                 filteredCountries.map((country) => (
                     <Link to={`/country/${country.alpha3Code}`}

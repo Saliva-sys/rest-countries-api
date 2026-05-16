@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RestCountries from "./RestCountries";
 import NavBar from './components/NavBar';
 import Country from './components/Country';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
   //*******************************************************************
@@ -30,7 +31,7 @@ const App: React.FC = () => {
         w-full 
         min-h-screen  md:h-screen 
         md:overflow-hidden
-        m-0 md:mt-10
+        m-0 
         transition-colors duration-300
         ">
           <main className="
@@ -49,16 +50,16 @@ const App: React.FC = () => {
               flex-col
               w-full    
               min-h-0          
-              transition-colors 
-              duration-300 
-              ">
+              transition-colors duration-300">
               <Routes>
                 <Route path="/" element={<RestCountries darkMode={darkMode}/>} />
                 <Route path="/country/:alpha3Code" element={<Country darkMode={darkMode} />} />          
               </Routes>
             </div>
           </main>
+          <Footer />
       </div>
+      
     </BrowserRouter>
   );
 };

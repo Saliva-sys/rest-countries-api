@@ -14,17 +14,16 @@ const NavBar: React.FC<NavBarProps> = ({onSwitch, darkMode}) => {
         dark: 'bg-dm-el text-white',
     }
 
-    return (
-    
+    return (    
         <nav className={`navbar
             flex 
             items-center 
             justify-between 
             w-full
-            pt-15 md:pt-5
+            pt-15 md:pt-[1.4rem]
             ps-8 md:ps-20             
             pe-[2.1rem] md:pe-20  
-            pb-[3.6rem] md:pb-6     
+            pb-[3.6rem] md:pb-[1.4rem]     
             shadow-[0px_0px_10px_rgba(0,0,0,0.1)] 
             transition-colors duration-300 
             z-10

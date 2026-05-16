@@ -30,6 +30,7 @@ const Country: React.FC<CountryProps> = ({darkMode}) => {
             ps-14 md:ps-20 
             pe-[3.4rem] 
             pt-20 
+            pb-85
             transition-colors duration-300 
             ${countryStyle[darkMode ? 'dark' : 'light']}`}>
             <div>
@@ -59,10 +60,10 @@ const Country: React.FC<CountryProps> = ({darkMode}) => {
                         subregion={country.subregion}
                         capital={country.capital ??""}
                         topLevelDomain={country.topLevelDomain}
-                        currencies={country.currencies ??[{name: "N/A"}]}
+                        currencies={country.currencies ?? [{name: "N/A"}]}
                         languages={country.languages}
                         borders={country.borders ?? ["N/A"]}
-                        
+                        darkMode={darkMode}                        
                     />
                 </div>
             </div>
