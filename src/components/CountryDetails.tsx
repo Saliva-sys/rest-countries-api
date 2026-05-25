@@ -33,12 +33,11 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
         <div className="
             flex 
             flex-col
-            md:ps-[3.1rem] 
-            pt-[5.3rem] md:pt-[2.3rem]">
+            md:ps-[1.65rem] 
+            pt-[5.3rem] md:pt-[2.25rem]">
             <h1 className="
-                text-[2.75rem] 
-                font-[800] 
-                md:text-[2rem] 
+                text-[2.75rem] md:text-[2rem]
+                font-[800]                  
                 tracking-[-0.05rem] md:tracking-[-0.03rem]">
                     {name}
             </h1>
@@ -55,7 +54,7 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                 <div className="
                     flex 
                     flex-col md:grid md:grid-cols-2 
-                    md:gap-12
+                    md:gap-18
                     pt-[0.45rem] md:pt-[0.8rem] 
                     md:text-[1rem] 
                     leading-16 md:leading-8">
@@ -87,10 +86,10 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                             Border Countries:
                     </p> 
                     <div className="
-                        flex
-                        flex-row
-                        flex-wrap
-                        gap-[1.2rem] md:gap-[0.6em]      
+                        grid
+                        grid-cols-2 min-[600px]:grid-cols-3 md:grid-cols-3                        
+                        gap-y-[1.2rem]       
+                        md:gap-[0.6rem]                  
                         ">
                         {borderCountries.length > 0 ? (
                             borderCountries.map((borderName, index) => (
@@ -102,7 +101,11 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                                     items-center
                                     rounded-[0.3rem]
                                     shadow-[0px_0px_12px_rgba(0,0,0,0.2)] 
-                                    w-[12.05rem] md:w-[6.15rem]
+                                    ${borderName.length > 11 
+                                        ? 'w-max px-3 whitespace-nowrap' 
+                                        : 'w-48 md:w-[6.15rem] truncate'
+                                    }
+                                    truncate
                                     pt-[0.2rem] md:pt-[0.2rem]
                                     pb-[0.3rem] md:pb-[0.2rem]
                                     text-[1.5rem] md:text-[0.9rem]
