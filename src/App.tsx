@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   //*******************************************************************
-      // Prepinanie "Light Mode" a "Dark Mode"
+      // Switching "Light Mode" and "Dark Mode"
       const [darkMode, setIsDark] = useState(false);
       
       const switchDarkMode = () => {

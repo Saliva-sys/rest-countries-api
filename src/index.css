@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* 1. Manuálne nadefinovanie fontu */
+/* 1. Manually define the font */
 @theme {
-  /* 2. Priradenie k premenným */
+  /* 2. Assignment to variables */
   --font-sans: "Nunito Sans", sans-serif;
   --font-weight-light: 300;
   --font-weight-semibold: 600;
@@ -18,10 +18,9 @@
   --color-blue: hsl(205, 100%, 36%);
 }
 
-/* 3. Vynútenie na celú aplikáciu */
+/* 3. Force for the entire application */
 @layer base {
-  html, body, #root {
-    /* Pridajme 'sans-serif' ako poistku a skúsme zmeniť poradie */
+  html, body, #root {    
     font-family: "Nunito Sans",sans-serif !important;
     font-feature-settings: "cv08" 0, "ss01" 0;
     -webkit-font-smoothing: antialiased;

@@ -14,7 +14,7 @@ interface RestCountriesProps  {
 const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
 
     // ******************************************************************
-    // vlastnosti pre "Dark Mode" a "Light Mode"    
+    // Features for "Dark Mode" and "Light Mode"    
     const modeStyle = {
         dark: 'bg-dm-bg text-white',
         light: 'bg-lm-bg text-lm-text',
@@ -26,10 +26,12 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     }
 
     // ********************************************************************
-    // Vyhladavanie a zobrazenie vyhladanej krajiny vo vyhladavacom poli podla nazvu a vo filtri podla regionu
+    // Features for searching and displaying countries
     const [searchValue, setSearchValue] = useState("");
     const [activeRegion, setActiveRegion] = useState("");
+    const [isOpen, setIsOpen] = useState(false); // FIXED: Moved up so it's available in handleFilterByRegion
     const navigate = useNavigate();
+    const [countries] = useState<Countries[]>(data as Countries[]);
 
     const handleSelectCountry = (country: Countries) => {
         setSearchValue(country.name);
@@ -50,20 +52,17 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     }
 
     //*********************************************************************
-    // prepinanie sipok
-    const [isOpen, setIsOpen] = useState(false);
-
+    // switch for filter
     const toggleFilter = () => {
         setIsOpen(prev => !prev);};      
         
     // *********************************************************************
-    // vyber krajin podla regionu
+    // filter countries based on search and region
     
 
     //*********************************************************************
-    // import dat z json
-    // const [countries, setCountries] = useState<Countries[]>(data);
-    const [countries] = useState<Countries[]>(data as Countries[]);
+    // import data from json
+    // const [countries, setCountries] = useState<Countries[]>(data);    
 
     // useEffect(() => {
         // fetch('/src/data.json')
@@ -73,17 +72,17 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     // }, []);
     //******************************************************************
 
-    // zapis na vykreslenie krajin z vyhladania musi byt az po nacitani dat z json, inak by sa filtroval prazdny zoznam a nezobrazilo by sa nic
+    // --- Filter logic based on search input and active region ---
     const filteredCountries = countries.filter(country => {
-        // Podmienka 1: Súhlasí meno? (Ak je searchValue prázdny, prejdú všetky)
+        // Condition 1: Check if country name matches search value (case-insensitive)
     const matchesName = country.name.toLowerCase().includes(searchValue.toLowerCase());
 
-    // Podmienka 2: Súhlasí región? (Ak nie je vybraný, prejdú všetky)
+    // Condition 2: Check if country region matches active region filter
     const matchesRegion = activeRegion === "" || country.region === activeRegion;
 
-    // KĽÚČ: Musia platiť OBA naraz
-    // Ak si v Europe, matchesRegion je true len pre Európu. 
-    // Ak k tomu začneš písať, matchesName to ďalej oseká len v rámci tej Európy.
+    // KEY: Both conditions must be true and must be met to pass the filter
+    // If you are in Europe, matchesRegion will be true only for Europe.
+    // If you start typing, matchesName will further filter only within Europe.
     return matchesName && matchesRegion;
 });
 

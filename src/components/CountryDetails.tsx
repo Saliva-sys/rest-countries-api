@@ -2,6 +2,7 @@ import React from 'react';
 
 import data from '../data.json';
 import {Countries } from '../types';
+import {useNavigate} from 'react-router-dom';
 
 interface CountryDetailsProps {
     name: string;
@@ -26,15 +27,23 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
 
     const borderCountries = borders?.map(border => {
         const country = (data as Countries[]).find(item => item.alpha3Code === border);
-        return country ? country.name : border;
-    })
+        return {
+            name: country ? country.name : border,
+            code: border // Toto si tu odložíme (napr. "AFG")
+        };
+    }) || [];
+
+    const navigate = useNavigate();
+    const handleBorderClick = (borderCode: string) => {
+        navigate(`/country/${borderCode.toUpperCase()}`);
+    }
     
     return (
         <div className="
             flex 
             flex-col
             md:ps-[1.65rem] 
-            pt-[5.3rem] md:pt-[2.25rem]">
+            pt-[5.3rem] md:pt-9">
             <h1 className="
                 text-[2.75rem] md:text-[2rem]
                 font-[800]                  
@@ -92,27 +101,36 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                         md:gap-[0.6rem]                  
                         ">
                         {borderCountries.length > 0 ? (
-                            borderCountries.map((borderName, index) => (
-                                <span
+                            borderCountries.map((country: { name: string, code: string }, index) => (
+                                <button
                                     key={index}
+                                    onClick={() => handleBorderClick(country.code)}
                                     className={`borderCountry 
                                     flex
                                     justify-center
                                     items-center
                                     rounded-[0.3rem]
                                     shadow-[0px_0px_12px_rgba(0,0,0,0.2)] 
-                                    ${borderName.length > 11 
-                                        ? 'w-max px-3 whitespace-nowrap' 
-                                        : 'w-48 md:w-[6.15rem] truncate'
-                                    }
-                                    truncate
+
+                                    w-48 md:w-[6.15rem] 
                                     pt-[0.2rem] md:pt-[0.2rem]
                                     pb-[0.3rem] md:pb-[0.2rem]
+
+                                    overflow-hidden
+                                    whitespace-nowrap
+                                    text-ellipsis
+                                    px-2
+
                                     text-[1.5rem] md:text-[0.9rem]
-                                    transition-colors duration-300
-                                    ${borderStyle[darkMode ? 'dark' : 'light']}`}>
-                                    {borderName}
-                                </span>
+                                    transition-all duration-300
+                                    hover:scale-105
+                                    ${borderStyle[darkMode ? 'dark' : 'light']}`}
+                                    title={country.name} 
+                                >
+                                    <span className="truncate block w-full text-center">
+                                        {country.name}
+                                    </span>
+                                </button>
                             ))
                         ) : (
                             <p>No border countries found.</p>

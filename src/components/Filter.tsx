@@ -16,7 +16,7 @@ const Filter: React.FC<FilterProps> = ({isOpen, onToggle, onFilterByRegion, sele
         dark: 'bg-dm-el',
     }
 
-    // filtrujeme krajiny podla regionu, aby sa zobrazili len tie, ktore patria do danej oblasti
+    // We filter countries by region to show only those that belong to the area
     const filters = ["Filter by Region", "Africa", "America", "Asia", "Europe", "Oceania"] 
     
 return (
@@ -51,7 +51,7 @@ return (
 
         </div>
 
-        {/* Vykreslenie zoznamu moznosti - vyskakovaci zoznam */}   
+        {/* Dropdown list for region select options */}   
         <div className="
             mt-2 md:mt-[0.2rem] 
             relative">

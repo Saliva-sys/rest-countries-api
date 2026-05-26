@@ -18,15 +18,15 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
         dark: 'bg-dm-el',    
     }
 
-    // Lokálny stav na to, aby sme vedeli, či je zoznam návrhov otvorený
+    // Local state to manage dropdown visibility
     const [isOpen, setIsOpen] = useState(false);
 
-    // hľadáme krajiny, ktoré začínajú na zadaný text
+    // Filter suggestions based on input value and active region
     const suggestions = (searchValue.trim().length > 0 && allCountries) 
         ? allCountries.filter(country => {
-            // podmienka pre zobrazenie krajin, ktorzch nazov zacina na text zadany do vzhladavacieho pola, bez ohladu na velkost pisma
+            // Condition for displaying countries whose name starts with the text entered in the search field, regardless of case
             const matchesName = country.name.toLowerCase().startsWith(searchValue.toLowerCase())
-            //podmienka, ake je vybrany region, nazov krajiny sa musi zhodovat s textom zadanym do vyhladavacieho pola a krajina musi paatrit do vybraneho regionu
+            // Condition for displaying countries in the selected region
             const matchesRegion = activeRegion ? country.region === activeRegion : true;
 
             return matchesName && matchesRegion;
@@ -56,7 +56,9 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                              setSearchValue(e.target.value);
                              setIsOpen(true);
                             }}   
-                        onFocus={() => setIsOpen(true)} // Otvoríme, aj keď do poľa len klikneš   
+                        onFocus={() => setIsOpen(true)} // We open even if you just click in the box 
+                        // Closes dropdown when clicking outside, timeout allows item click to register first
+                        onBlur={() => setTimeout(() => setIsOpen(false), 200)}
                         placeholder="Search for a country..."
                         className="
                             text-[1.5rem] md:text-[0.9rem] 
@@ -69,7 +71,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                 </div>
             </form>
 
-            {/* Vykreslenie zoznamu moznosti - vyskakovaci zoznam */}
+            {/* Drawing a list of the options - pop-up list */}
             <div className="mt-2 relative z-10">
                 {isOpen && searchValue.trim().length > 0 && (
                     <ul className={`popup 
