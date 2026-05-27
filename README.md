@@ -47,7 +47,7 @@ Functionality:
 ### Links
 
 - Solution URL: [Github Link](https://github.com/Saliva-sys/rest-countries-api.git)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live Site URL](https://saliva-sys.github.io/rest-countries-api/)
 
 ## My process
 

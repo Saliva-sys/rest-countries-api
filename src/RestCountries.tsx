@@ -87,7 +87,7 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
 });
 
     return (
-        <main className={`main 
+        <div className={`content 
             flex 
             flex-col 
             w-full
@@ -182,7 +182,7 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
                 }
                 </div>
             </div>
-        </main>
+        </div>
     );
 };
 

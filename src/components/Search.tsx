@@ -36,7 +36,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
     console.log(searchValue);
     return (
         <div>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <div onSubmit={(e) => e.preventDefault()}>
                 <div className={`search 
                     flex 
                     h-24 md:h-14 
@@ -69,7 +69,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                         >
                     </input>
                 </div>
-            </form>
+            </div>
 
             {/* Drawing a list of the options - pop-up list */}
             <div className="mt-2 relative z-10">

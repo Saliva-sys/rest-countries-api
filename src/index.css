@@ -20,8 +20,8 @@
 
 /* 3. Force for the entire application */
 @layer base {
-  html, body, #root {    
-    font-family: "Nunito Sans",sans-serif !important;
+  html, body{    
+    font-family: "Nunito Sans",sans-serif;
     font-feature-settings: "cv08" 0, "ss01" 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
