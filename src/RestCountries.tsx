@@ -137,7 +137,7 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
                     min-h-0 
                     md:overflow-y-auto 
                     mt-14 md:mt-[6.3rem]
-                    ms-20 md:ms-0 
+                    ms-4 sm:ms-20 md:ms-0 
                     me-[4.8rem] md:me-0 
                     gap-y-20 md:gap-y-[4.7rem] 
                     md:gap-x-[4.7rem]">

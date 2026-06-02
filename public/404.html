@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script type="text/javascript"></script>
+    <script>
+      // save the current path on which 404 error occured to sessionStorage
+      sessionStorage.redirect = location.pathname;
+      // redirect the user to the home page 
+      location.replace("/rest-countries-api");
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

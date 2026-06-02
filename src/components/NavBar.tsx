@@ -20,17 +20,17 @@ const NavBar: React.FC<NavBarProps> = ({onSwitch, darkMode}) => {
             items-center 
             justify-between 
             w-full
-            pt-15 md:pt-[1.4rem]
+            max-[700px]:pt-8 min-[700px]:pt-15 md:pt-[1.4rem]
             ps-8 md:ps-20             
-            pe-[2.1rem] md:pe-20  
-            pb-[3.6rem] md:pb-[1.4rem]     
+            max-[700px]:pe-8 min-[700px]:pe-[2.1rem] md:pe-20  
+            max-[700px]:pb-8 min-[700px]:pb-[3.6rem] md:pb-[1.4rem]     
             shadow-[0px_0px_10px_rgba(0,0,0,0.1)] 
             transition-colors duration-300 
             z-10
             ${navStyle[darkMode ? 'dark' : 'light']}`}
         >
             <h1 className="
-                text-[1.76rem] md:text-[1.5rem] 
+                max-[700px]:text-[1.2rem] min-[700px]:text-[1.76rem] md:text-[1.5rem] 
                 font-[800] 
                 tracking-[-0.018rem] md:tracking-normal 
                 m-0">
@@ -40,16 +40,16 @@ const NavBar: React.FC<NavBarProps> = ({onSwitch, darkMode}) => {
             <div className="
                 flex 
                 items-center 
-                gap-x-6 md:gap-x-[0.8rem] 
+                max-[700px]:gap-x-2 min-[700px]:gap-x-6 md:gap-x-[0.8rem] 
                 mode-toggle 
                 cursor-pointer"
                 onClick={onSwitch}>
                 <span className="
-                text-[1.5rem] md:text-[1rem] 
+                max-[700px]:text-[1rem] min-[700px]:text-[1.5rem] md:text-[1rem] 
                 font-semibold">
                     {darkMode ? <FaRegMoon /> : <FaMoon />}</span>
                 <span className="
-                    text-[1.5rem] md:text-[1.01rem] 
+                    max-[700px]:text-[1rem] min-[700px]:text-[1.5rem] md:text-[1.01rem] 
                     tracking-[-0.015rem] md:tracking-normal 
                     m-0 
                     font-semibold">

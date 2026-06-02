@@ -26,28 +26,27 @@ return (
         className={`filter 
             relative 
             flex 
-            h-24 
-            md:h-14 
+            max-[700px]:h-12 min-[700px]:h-24 md:h-14 
             items-center 
-            mt-18 
+            max-[700px]:mt-8 min-[700px]:mt-18 
             md:m-0 
             ps-12 md:ps-6 
             pe-[2.45rem] md:pe-[1.1rem] 
             shadow-[0px_4px_10px_rgba(0,0,0,0.1)] 
             rounded-[0.6rem] md:rounded-lg 
-            w-[25.1rem] md:w-50 
+            max-[700px]:w-full min-[700px]:w-[25.1rem] md:w-50 
             justify-between 
             cursor-pointer 
             transition-colors duration-300 
             ${filterStyle[darkMode ? 'dark' : 'light']}`}
         >
             <span className="
-                text-[1.5rem] md:text-[0.9rem] 
+                max-[700px]:text-[1rem] min-[700px]:text-[1.5rem] md:text-[0.9rem] 
                 font-semibold 
                 tracking-[-0.017rem] md:tracking-[-0.025rem]">
                     {selectedRegion === "" ? "Filter by Region" : selectedRegion === "Americas" ? "America" : selectedRegion}</span>       
 
-            <span>{isOpen ? <FaChevronDown className="text-[17px] md:text-[12px]" /> : <FaChevronUp className="text-[17px] md:text-[12px]" />}</span>      
+            <span>{isOpen ? <FaChevronDown className="max-[700px]:text-[12px] min-[700px]:text-[17px] md:text-[12px]" /> : <FaChevronUp className="max-[700px]:text-[12px] min-[700px]:text-[17px] md:text-[12px]" />}</span>      
 
         </div>
 
@@ -60,7 +59,7 @@ return (
                 absolute 
                 cursor-pointer 
                 rounded-[0.6rem] 
-                w-[25.1rem] md:w-50 
+                max-[700px]:w-full min-[700px]:w-[25.1rem] md:w-50 
                 h-auto 
                 pt-8 md:pt-4 
                 ps-12 md:ps-6 
@@ -73,7 +72,7 @@ return (
                             key={region}
                             onClick = {() => onFilterByRegion(region)}
                             className="
-                            text-[1.5rem] md:text-[0.9rem] 
+                            max-[700px]:text-[1rem] min-[700px]:text-[1.5rem] md:text-[0.9rem] 
                             font-semibold 
                             tracking-[-0.017rem] md:tracking-[-0.02rem]">
                             {region}                                

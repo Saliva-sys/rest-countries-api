@@ -36,19 +36,19 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
     console.log(searchValue);
     return (
         <div>
-            <div onSubmit={(e) => e.preventDefault()}>
+            <div>
                 <div className={`search 
                     flex 
-                    h-24 md:h-14 
+                    max-[700px]:h-12 min-[700px]:h-24 md:h-14 
                     w-full md:w-120 
                     items-center 
-                    ps-16 md:ps-8 
-                    gap-14 md:gap-[1.6rem] 
+                    max-[700px]:ps-4 min-[700px]:ps-16 md:ps-8 
+                    max-[700px]:gap-4 min-[700px]:gap-14 md:gap-[1.6rem] 
                     shadow-[0px_4px_10px_rgba(0,0,0,0.1)] 
                     rounded-[0.6rem] 
                     transition-colors duration-300 
                     ${searchStyle[darkMode ? 'dark' : 'light']}`}>
-                    {searchValue === "" && (<span className="text-[1.8rem] md:text-[1rem]"><FaSearch /></span>)}
+                    {searchValue === "" && (<span className="max-[700px]:text-[1rem] min-[700px]:text-[1.8rem] md:text-[1rem]"><FaSearch /></span>)}
                     <input
                         type="text"          
                         value={searchValue}
@@ -61,7 +61,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                         onBlur={() => setTimeout(() => setIsOpen(false), 200)}
                         placeholder="Search for a country..."
                         className="
-                            text-[1.5rem] md:text-[0.9rem] 
+                            max-[700px]:text-[1rem] min-[700px]:text-[1.5rem] md:text-[0.9rem] 
                             tracking-[0.012rem] md:tracking-normal 
                             w-full 
                             outline-none 
@@ -78,7 +78,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                     absolute 
                     cursor-pointer 
                     rounded-[0.6rem] 
-                    w-100 md:w-50 
+                    max-[700px]:w-full min-[700px]:w-100 md:w-50 
                     h-auto 
                     pt-8 md:pt-4 
                     ps-12 md:ps-6 
@@ -95,7 +95,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                                     setIsOpen(false);
                                 }}
                                 className="
-                                text-[1.5rem] md:text-[0.9rem] 
+                                max-[700px]:text-[1rem] min-[700px]:text-[1.5rem] md:text-[0.9rem] 
                                 font-semibold 
                                 tracking-[-0.01rem] md:tracking-normal">
                                     {country.name}
