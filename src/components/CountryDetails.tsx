@@ -43,9 +43,9 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
             flex 
             flex-col
             md:ps-[1.65rem] 
-            pt-[5.3rem] md:pt-9">
+            max-[700px]:pt-6 min-[700px]:pt-[5.3rem] md:pt-9">
             <h1 className="
-                text-[2.75rem] md:text-[2rem]
+                max-[700px]:text-[1.2rem] min-[700px]:text-[2.75rem] md:text-[2rem]
                 font-[800]                  
                 tracking-[-0.05rem] md:tracking-[-0.03rem]">
                     {name}
@@ -54,9 +54,9 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
             <div className="
                 flex 
                 flex-col 
-                pt-[1.45rem] md:pt-2 
+                max-[700px]:pt-[0.8rem] min-[700px]:pt-[1.45rem] md:pt-2 
                 pb-[5.2rem] md:pb-[2.6rem] 
-                text-[1.74rem] md:text-[0.87rem] 
+                max-[700px]:text-[1rem] min-[700px]:text-[1.74rem] md:text-[0.87rem] 
                 leading-12 md:leading-6 
                 tracking-[-0.001rem] ">
                 
@@ -66,7 +66,7 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                     md:gap-18
                     pt-[0.45rem] md:pt-[0.8rem] 
                     md:text-[1rem] 
-                    leading-16 md:leading-8">
+                    max-[700px]:leading-8 min-[700px]:leading-16 md:leading-8">
                     <div>
                         <p><span className="font-semibold">Native Name:</span> {nativeName}</p>
                         <p><span className="font-semibold">Population:</span> {population.toLocaleString('en-US')}</p>
@@ -75,7 +75,7 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                         <p><span className="font-semibold">Capital:</span> {capital}</p>
                     </div>
                     <div className="
-                        pt-16 md:pt-0">
+                        max-[700px]:pt-6 min-[700px]:pt-16 md:pt-0">
                         <p><span className="font-semibold">Top Level Domain:</span> {topLevelDomain.join(', ')}</p>
                         <p><span className="font-semibold">Currencies:</span> {currencies.map(currency => currency.name).join(', ')}</p>
                         <p><span className="font-semibold">Languages:</span> {languages.map(language => language.name).join(', ')}</p>
@@ -86,11 +86,11 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                     flex
                     flex-col md:flex-row
                     md:items-center
-                    mt-[4.2rem] md:mt-[4.15rem]
+                    max-[700px]:mt-6 min-[700px]:mt-[4.2rem] md:mt-[4.15rem]
                     gap-8 md:gap-[0.9rem]">
                     <p className="
                         font-semibold
-                        text-[2rem] md:text-[1rem]
+                        max-[700px]:text-[1.1rem] min-[700px]:text-[2rem] md:text-[1rem]
                         whitespace-nowrap">
                             Border Countries:
                     </p> 

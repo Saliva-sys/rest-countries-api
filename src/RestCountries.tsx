@@ -106,10 +106,10 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
                 
                 <div className="
                 flex 
-                flex-col md:flex-row
+                flex-col min-[768px]:flex-row
                 grow 
                 min-h-0 
-                md:justify-between">
+                min-[768px]:justify-between">
                     <section>
                         <Search 
                             searchValue={searchValue}
@@ -132,14 +132,14 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
 
                 <div className="
                     grid
-                    grid-cols-1 md:grid-cols-4
+                    max-[870px]:grid-cols-1 min-[870px]:grid-cols-3 min-[1100px]:grid-cols-4
                     grow
                     min-h-0 
                     md:overflow-y-auto 
-                    mt-14 md:mt-[6.3rem]
-                    ms-4 sm:ms-20 md:ms-0 
-                    me-[4.8rem] md:me-0 
-                    gap-y-20 md:gap-y-[4.7rem] 
+                    max-[700px]:mt-8 min-[700px]:mt-14 md:mt-[6.3rem]
+                    max-[700px]:ms-4 min-[700px]:ms-20 md:ms-0 
+                    max-[700px]:me-4 min-[700px]:me-[4.8rem] md:me-0 
+                    max-[700px]:gap-y-8 min-[700px]:gap-y-20 md:gap-y-[4.7rem] 
                     md:gap-x-[4.7rem]">
                 {filteredCountries.length > 0 ? (
                 filteredCountries.map((country) => (

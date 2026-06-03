@@ -40,7 +40,7 @@ const Search: React.FC<SearchProps> = ({searchValue, setSearchValue, allCountrie
                 <div className={`search 
                     flex 
                     max-[700px]:h-12 min-[700px]:h-24 md:h-14 
-                    w-full md:w-120 
+                    max-[767px]:w-full min-[768px]:w-100 min-[1100px]:w-120  
                     items-center 
                     max-[700px]:ps-4 min-[700px]:ps-16 md:ps-8 
                     max-[700px]:gap-4 min-[700px]:gap-14 md:gap-[1.6rem] 

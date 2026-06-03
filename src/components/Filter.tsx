@@ -34,7 +34,7 @@ return (
             pe-[2.45rem] md:pe-[1.1rem] 
             shadow-[0px_4px_10px_rgba(0,0,0,0.1)] 
             rounded-[0.6rem] md:rounded-lg 
-            max-[700px]:w-full min-[700px]:w-[25.1rem] md:w-50 
+            max-[590px]:w-full min-[590px]:w-[25.1rem] md:w-50 
             justify-between 
             cursor-pointer 
             transition-colors duration-300 
