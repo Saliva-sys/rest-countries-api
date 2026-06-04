@@ -30,7 +30,7 @@ const Country: React.FC<CountryProps> = ({darkMode}) => {
             max-[700px]:ps-10 min-[700px]:ps-14 md:ps-20 
             pe-[3.4rem] 
             max-[700px]:pt-10 min-[700px]:pt-20 
-            pb-85
+            pb-80
             transition-colors duration-300 
             ${countryStyle[darkMode ? 'dark' : 'light']}`}>
             <div>
@@ -40,7 +40,7 @@ const Country: React.FC<CountryProps> = ({darkMode}) => {
             </div>
             <div className="
                 flex md:grid 
-                max-[1000px]:flex-col min-[1000px]:grid-cols-2 
+                max-[1050px]:flex-col min-[1050px]:grid-cols-2 
                 max-[700px]:pt-15 min-[700px]:pt-32 md:pt-20 
                 justify-between">
                 <div>

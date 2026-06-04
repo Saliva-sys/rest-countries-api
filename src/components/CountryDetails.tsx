@@ -86,8 +86,8 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                     flex
                     flex-col md:flex-row
                     md:items-center
-                    max-[700px]:mt-6 min-[700px]:mt-[4.2rem] md:mt-[4.15rem]
-                    gap-8 md:gap-[0.9rem]">
+                    max-[700px]:mt-4 min-[700px]:mt-[4.2rem] min-[768px]:mt-4 min-[1050px]:mt-[4.15rem]
+                    max-[700px]:gap-4 min-[700px]:gap-8 md:gap-[0.9rem]">
                     <p className="
                         font-semibold
                         max-[700px]:text-[1.1rem] min-[700px]:text-[2rem] md:text-[1rem]
@@ -96,9 +96,9 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                     </p> 
                     <div className="
                         grid
-                        grid-cols-2 min-[600px]:grid-cols-3 md:grid-cols-3                        
+                        max-[620px]:grid-cols-2 min-[620px]:grid-cols-3 md:grid-cols-3                        
                         gap-y-[1.2rem]       
-                        md:gap-[0.6rem]                  
+                        max-[700px]:gap-x-2 md:gap-[0.6rem]                  
                         ">
                         {borderCountries.length > 0 ? (
                             borderCountries.map((country: { name: string, code: string }, index) => (
@@ -112,16 +112,16 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
                                     rounded-[0.3rem]
                                     shadow-[0px_0px_12px_rgba(0,0,0,0.2)] 
 
-                                    w-48 md:w-[6.15rem] 
-                                    pt-[0.2rem] md:pt-[0.2rem]
-                                    pb-[0.3rem] md:pb-[0.2rem]
+                                    max-[700px]:w-35 min-[700px]:w-48 md:w-[6.15rem] 
+                                    max-[700px]:pt-[0.1rem] min-[700px]:pt-[0.2rem] md:pt-[0.2rem]
+                                    max-[700px]:pb-[0.1rem] min-[700px]:pb-[0.3rem] md:pb-[0.2rem]
 
                                     overflow-hidden
                                     whitespace-nowrap
                                     text-ellipsis
                                     px-2
 
-                                    text-[1.5rem] md:text-[0.9rem]
+                                    max-[700px]:text-[1rem] min-[700px]:text-[1.5rem] md:text-[0.9rem]
                                     transition-all duration-300
                                     hover:scale-105
                                     ${borderStyle[darkMode ? 'dark' : 'light']}`}
