@@ -1,6 +1,6 @@
 import React from 'react';
 
-import data from '../data.json';
+// import data from '../data.json';
 import {Countries } from '../types';
 import {useNavigate} from 'react-router-dom';
 
@@ -16,9 +16,10 @@ interface CountryDetailsProps {
     borders?: string[];
     nativeName: string;
     darkMode:boolean;
+    allCountries?: Countries[]; // Added prop for all countries data
 }
 
-const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region, subregion, capital, topLevelDomain, currencies, languages, borders = [], nativeName, darkMode}) => {
+const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region, subregion, capital, topLevelDomain, currencies, languages, borders = [], nativeName, darkMode, allCountries}) => {
 
     const borderStyle = {
         light: 'bg-white text-lm-text',
@@ -26,10 +27,11 @@ const CountryDetails: React.FC<CountryDetailsProps> = ({name, population, region
     }
 
     const borderCountries = borders?.map(border => {
-        const country = (data as Countries[]).find(item => item.alpha3Code === border);
+        // const country = (data as Countries[]).find(item => item.alpha3Code === border);
+        const country = allCountries?.find(item => item.alpha3Code === border);
         return {
-            name: country ? country.name : border,
-            code: border // Toto si tu odložíme (napr. "AFG")
+            name: country ? country.name : border, // if country is not found, use the border code as a fallback
+            code: border // leave this here (eg. "AFG") for navigation purposes, even if the country name is not found in the data
         };
     }) || [];
 

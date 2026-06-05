@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
-import data from './data.json';
+//import data from './data.json';
 
 import Search from './components/Search';
 import Filter from './components/Filter';
 import Flags from './components/Flags';
 import Info from './components/Info';
-import { Countries } from './types';
+import { Countries, } from './types';
 import { Link, useNavigate } from 'react-router-dom';
 interface RestCountriesProps  {
     darkMode: boolean;
+    countries:Countries[];
+    loading: boolean;
+    error: string;
 }
 
-const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
+const RestCountries: React.FC<RestCountriesProps> = ({darkMode, countries, loading, error}) => {
 
     // ******************************************************************
     // Features for "Dark Mode" and "Light Mode"    
@@ -31,7 +34,9 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     const [activeRegion, setActiveRegion] = useState("");
     const [isOpen, setIsOpen] = useState(false); // FIXED: Moved up so it's available in handleFilterByRegion
     const navigate = useNavigate();
-    const [countries] = useState<Countries[]>(data as Countries[]);
+
+    // for now, we will use th data from json file, but we can also fetch data from API
+    //const [countries] = useState<Countries[]>(data as Countries[]);
 
     const handleSelectCountry = (country: Countries) => {
         setSearchValue(country.name);
@@ -86,7 +91,30 @@ const RestCountries: React.FC<RestCountriesProps> = ({darkMode}) => {
     return matchesName && matchesRegion;
 });
 
-    return (
+    
+        if (loading) {
+            return (
+                <div className={`content 
+                    flex
+                    items-center
+                    justify-center
+                    h-screen
+                    text-[1.5rem] font-bold ${modeStyle[darkMode ? 'dark' : 'light']}`}>
+                    Loading ...
+                </div>
+            );
+        }
+        if (error) {
+            return (
+                <div className={`content
+                    flex
+                    items-center justify-center h-screen text-[1.5rem] font-bold text-red-500 ${modeStyle[darkMode ? 'dark' : 'light']}`}>
+                    {error}
+                </div>
+                );
+            }
+
+        return (
         <div className={`content 
             flex 
             flex-col 
