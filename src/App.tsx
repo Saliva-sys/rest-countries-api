@@ -6,7 +6,15 @@ import Country from './components/Country';
 import Footer from './components/Footer';
 import { Countries, Translations } from './types';
 
+const getRouterBase = (): string => {
+  if (typeof window === 'undefined') return '/';
+  return window.location.pathname.startsWith('/rest-countries-api/')
+    ? '/rest-countries-api/'
+    : '/';
+};
+
 const App: React.FC = () => {
+  const routerBasename = import.meta.env.VITE_BASE_URL || getRouterBase();
   //*******************************************************************
       // Switching "Light Mode" and "Dark Mode"
       const [darkMode, setIsDark] = useState(false);
@@ -145,7 +153,7 @@ const App: React.FC = () => {
     }, []);
 
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter basename={routerBasename}>
       <div className=" 
         flex 
         flex-col 

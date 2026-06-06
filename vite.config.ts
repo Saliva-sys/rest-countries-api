@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-export default defineConfig({ 
+export default defineConfig({
   plugins: [tailwindcss(), react()],
   css: {
     preprocessorOptions: {
@@ -12,5 +12,5 @@ export default defineConfig({
       },
     },
   },
-  base: '',
+  base: './',
 })

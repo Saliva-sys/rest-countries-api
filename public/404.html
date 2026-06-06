@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script type="text/javascript"></script>
-    <script>
-      // save the current path on which 404 error occured to sessionStorage
-      sessionStorage.redirect = location.pathname;
-      // redirect the user to the home page 
-      location.replace("/rest-countries-api");
-    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/rest-countries-api/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest Countries API</title>
   </head>
   <body>
+    <div id="root"></div>
+    <script type="module" src="/rest-countries-api/src/main.tsx"></script>
   </body>
 </html>
