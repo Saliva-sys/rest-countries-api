@@ -47,7 +47,9 @@ Functionality:
 ### Links
 
 - Solution URL: [Github Link](https://github.com/Saliva-sys/rest-countries-api.git)
-- Live Site URL: [Live Site URL](https://saliva-sys.github.io/rest-countries-api/)
+- Live Site URL: [Github Pages](https://saliva-sys.github.io/rest-countries-api/)
+- Live Site URL: [Netlify](https://rest-countries-api-saliva.netlify.app/)
+- Live Site URL: [Vercel](https://rest-countries-api-sigma-nine.vercel.app/)
 
 ## My process
 
@@ -164,6 +166,8 @@ What didn't work well?
 
 - Frontend Mentor - [@Saliva-sys](https://www.frontendmentor.io/profile/Saliva-sys)
 - GitHub - [Saliva-sys](https://github.com/Saliva-sys)
+- Netlify - [Saliva-sys Profile](https://app.netlify.com/teams/saliva-sys) 
+- Vercel - [Saliva-sys Profile](https://vercel.com/saliva-sys-projects)
 
 ## Acknowledgments
 
